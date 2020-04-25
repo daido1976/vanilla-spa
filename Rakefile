@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require './pg_client'
+
 dbname = 'sinatra-db'
 
 # @return [boolean]
@@ -42,5 +44,24 @@ namespace :db do
   task :reset do
     drop_db_service.call if already_exists?
     create_db_service.call
+  end
+
+  desc 'Migrate DB'
+  task :migrate do
+    next puts "error: #{dbname} does not exist" unless already_exists?
+
+    pg = PgClient.new(dbname: dbname)
+
+    sql = <<~SQL
+      CREATE TABLE weather (
+      city varchar(80),
+      temp_lo int,
+      temp_hi int,
+      prcp real,
+      date date
+      );
+    SQL
+
+    pg.exec(sql)
   end
 end
