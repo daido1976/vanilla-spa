@@ -25,4 +25,17 @@ namespace :db do
       puts 'error: failed to drop'
     end
   end
+
+  desc 'Reset DB'
+  task :reset do
+    if already_exists?
+      system("dropdb #{dbname}")
+      puts "#{dbname} dropped"
+      system("createdb #{dbname}")
+      puts "#{dbname} created"
+    else
+      system("createdb #{dbname}")
+      puts "#{dbname} created"
+    end
+  end
 end
