@@ -5,7 +5,6 @@
 require './pg_client'
 
 dbname = 'sinatra-db'
-pg = PgClient.new(dbname: dbname)
 
 # @todo Fix logic
 # @return [boolean]
@@ -63,6 +62,7 @@ namespace :db do
       );
     SQL
 
+    pg = PgClient.new(dbname: dbname)
     pg.exec(sql)
   end
 
@@ -74,6 +74,7 @@ namespace :db do
       INSERT INTO posts (name, comment, created_at) VALUES ('daido', 'Cheese!!!', \'#{Time.now.strftime('%F %T')}\');
     SQL
 
+    pg = PgClient.new(dbname: dbname)
     pg.exec(sql)
   end
 end
