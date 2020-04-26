@@ -3,7 +3,7 @@ const handleSubmit = async () => {
   const data = {
     comment,
   };
-  const res = await fetch("/api/comments", {
+  const res = await fetch("/api/posts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;",

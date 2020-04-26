@@ -7,11 +7,13 @@ get '/' do
   send_file 'index.html'
 end
 
-post '/api/comments' do
+post '/api/posts' do
   json = JSON.parse(request.body.read, symbolize_names: true)
-  res = {
-    comment: json[:comment],
-    created_at: Time.now.strftime('%F at %I:%M%#p')
-  }
-  res.to_json
+  posts = [
+    {
+      comment: json[:comment],
+      created_at: Time.now.strftime('%F at %I:%M%#p')
+    }
+  ]
+  posts.to_json
 end
