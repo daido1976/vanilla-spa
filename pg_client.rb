@@ -3,6 +3,7 @@
 require 'forwardable'
 require 'pg'
 
+# PostgreSQL client
 class PgClient
   extend Forwardable
   def_delegator :@connection, :exec

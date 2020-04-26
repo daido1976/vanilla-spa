@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 require './pg_client'
 
 dbname = 'sinatra-db'
 
+# @todo Fix logic
 # @return [boolean]
 define_method(:already_exists?) { `psql -l`.split.include?(dbname) }
 
@@ -65,3 +68,5 @@ namespace :db do
     pg.exec(sql)
   end
 end
+
+# rubocop:enable Metrics/BlockLength
