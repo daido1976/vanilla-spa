@@ -8,7 +8,7 @@ class PgClient
   extend Forwardable
   def_delegator :@connection, :exec
 
-  def initialize(dbname:)
-    @connection = PG.connect(dbname: dbname)
+  def initialize
+    @connection = PG.connect(dbname: 'sinatra-db')
   end
 end
