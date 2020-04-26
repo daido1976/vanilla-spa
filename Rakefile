@@ -5,6 +5,7 @@
 require './pg_client'
 
 dbname = 'sinatra-db'
+pg = PgClient.new(dbname: dbname)
 
 # @todo Fix logic
 # @return [boolean]
@@ -53,16 +54,24 @@ namespace :db do
   task :migrate do
     next puts "error: #{dbname} does not exist" unless already_exists?
 
-    pg = PgClient.new(dbname: dbname)
+    sql = <<~SQL
+      CREATE TABLE posts (
+      id serial,
+      name varchar(12),
+      comment varchar(30),
+      created_at timestamp
+      );
+    SQL
+
+    pg.exec(sql)
+  end
+
+  desc 'Add seed to DB'
+  task :seed do
+    next puts "error: #{dbname} does not exist" unless already_exists?
 
     sql = <<~SQL
-      CREATE TABLE weather (
-      city varchar(80),
-      temp_lo int,
-      temp_hi int,
-      prcp real,
-      date date
-      );
+      INSERT INTO posts (name, comment, created_at) VALUES ('daido', 'Cheese!!!', \'#{Time.now.strftime('%F %T')}\');
     SQL
 
     pg.exec(sql)
