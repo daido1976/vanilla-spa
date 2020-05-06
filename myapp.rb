@@ -2,6 +2,7 @@
 
 require 'json'
 require 'sinatra'
+require 'sinatra/reloader' if development?
 require './pg_client'
 
 enable :sessions
