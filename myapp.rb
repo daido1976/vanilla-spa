@@ -5,7 +5,7 @@ require 'sinatra'
 require './pg_client'
 
 get '/' do
-  send_file 'index.html'
+  send_file "#{Sinatra::Application.public_dir}/index.html"
 end
 
 post '/api/posts' do
