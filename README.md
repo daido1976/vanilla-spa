@@ -3,4 +3,5 @@
 ```
 # You need to setup DB, useful command is `$ bundle exec rake -T`.
 $ bundle exec ruby myapp.rb
+$ open http://localhost:4567
 ```
