@@ -2,10 +2,18 @@
 
 require 'json'
 require 'sinatra'
+require 'sinatra/reloader' if development?
 require './pg_client'
+
+enable :sessions
 
 get '/' do
   send_file "#{Sinatra::Application.public_dir}/index.html"
+end
+
+get '/login/:user_id' do
+  puts "session[:user_id] => #{session[:user_id]}"
+  session[:user_id] = params['user_id']
 end
 
 post '/api/posts' do

@@ -2,7 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    backports (3.17.1)
     jaro_winkler (1.5.4)
+    multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     parallel (1.19.1)
@@ -30,6 +32,13 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
+    sinatra-contrib (2.0.8.1)
+      backports (>= 2.8.2)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.0.8.1)
+      sinatra (= 2.0.8.1)
+      tilt (~> 2.0)
     tilt (2.0.10)
     unicode-display_width (1.7.0)
 
@@ -41,6 +50,7 @@ DEPENDENCIES
   rake
   rubocop
   sinatra
+  sinatra-contrib
 
 BUNDLED WITH
    2.1.4
