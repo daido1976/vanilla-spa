@@ -5,6 +5,7 @@ require 'minitest/autorun'
 require 'rack/test'
 require './myapp'
 
+# test myapp.rb
 class MyAppTest < Minitest::Test
   include Rack::Test::Methods
 
