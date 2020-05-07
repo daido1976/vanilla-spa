@@ -18,6 +18,12 @@ class MyAppTest < Minitest::Test
     assert_includes last_response.body, 'Hello!'
   end
 
+  def test_get_login
+    get '/login/test_user'
+    assert_equal 200, last_response.status
+    assert_equal 'test_user', last_request.session['user_id']
+  end
+
   def test_post_api_posts
     post '/api/posts', JSON.generate(comment: 'test!')
     assert_equal 200, last_response.status
