@@ -3,7 +3,7 @@
 require 'json'
 require 'sinatra'
 require 'sinatra/reloader' if development?
-require './pg_client'
+require './post'
 
 enable :sessions
 
@@ -17,18 +17,10 @@ get '/login/:user_id' do
 end
 
 post '/api/posts' do
-  json = JSON.parse(request.body.read, symbolize_names: true)
+  request_body = JSON.parse(request.body.read, symbolize_names: true)
 
-  posts_create_sql = <<~SQL
-    INSERT INTO posts (name, comment, created_at) VALUES ('daido', \'#{json[:comment]}\', \'#{Time.now.strftime('%F %T')}\');
-  SQL
-  pg = PgClient.new
-  pg.exec(posts_create_sql)
-
-  posts_all_sql = <<~SQL
-    SELECT * FROM posts;
-  SQL
-  posts = pg.exec(posts_all_sql).to_a
+  Post.create(name: 'daido', comment: request_body[:comment])
+  posts = Post.all
 
   posts.to_json
 end
