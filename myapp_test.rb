@@ -27,7 +27,8 @@ class MyAppTest < Minitest::Test
 
   def test_post_api_posts
     post '/api/posts', JSON.generate(comment: 'test!')
+    response = JSON.parse(last_response.body, symbolize_names: true)
     assert_equal 200, last_response.status
-    assert_equal 'test!', JSON.parse(last_response.body, symbolize_names: true).last[:comment]
+    assert_equal 'test!', response.last[:comment]
   end
 end
