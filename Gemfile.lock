@@ -4,6 +4,7 @@ GEM
     ast (2.4.0)
     backports (3.17.1)
     jaro_winkler (1.5.4)
+    minitest (5.14.0)
     multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -14,6 +15,8 @@ GEM
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rainbow (3.0.0)
     rake (13.0.1)
     rexml (3.2.4)
@@ -46,7 +49,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   pg
+  rack-test
   rake
   rubocop
   sinatra

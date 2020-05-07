@@ -9,3 +9,8 @@ gem 'rake'
 gem 'rubocop'
 gem 'sinatra'
 gem 'sinatra-contrib'
+
+group :test do
+  gem 'minitest'
+  gem 'rack-test'
+end
