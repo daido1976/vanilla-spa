@@ -2,7 +2,7 @@
 
 # rubocop:disable Metrics/BlockLength
 
-require './pg_client'
+require './db/pg_client'
 
 dbname = 'sinatra-db'
 

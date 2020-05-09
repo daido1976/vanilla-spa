@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './pg_client'
+require './db/pg_client'
 
 # Post model
 class Post
