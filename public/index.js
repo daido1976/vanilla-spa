@@ -19,7 +19,10 @@ const handleSubmit = async () => {
 };
 
 const handleLogin = async () => {
-  const res = await fetch("/login/hoge");
+  const res = await fetch("/login/hoge", {
+    mode: "cors",
+    credentials: "include",
+  });
   const responseData = await res.text();
   console.log(responseData);
 };

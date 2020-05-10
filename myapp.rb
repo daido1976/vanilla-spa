@@ -10,8 +10,8 @@ enable :sessions
 
 use Rack::Cors do
   allow do
-    origins '*'
-    resource '*', headers: :any, methods: :any
+    origins 'http://localhost:4567'
+    resource '*', headers: :any, methods: :any, credentials: true
   end
 end
 
