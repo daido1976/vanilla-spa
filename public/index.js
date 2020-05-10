@@ -17,3 +17,9 @@ const handleSubmit = async () => {
   // Delete input value
   document.querySelector("input#comment").value = "";
 };
+
+const handleLogin = async () => {
+  const res = await fetch("/login/hoge");
+  const responseData = await res.text();
+  console.log(responseData);
+};
