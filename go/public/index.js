@@ -12,3 +12,9 @@ document.getElementById("redirect").onclick = async () => {
     method: "GET",
   });
 };
+
+import { greet } from "./lib.js";
+
+document.getElementById("runjs").onclick = () => {
+  console.log(greet());
+};
