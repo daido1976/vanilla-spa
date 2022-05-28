@@ -2,5 +2,7 @@
 
 ```sh
 # with sinatra
-$ cd ruby/
+$ cd sinatra/
+# with go
+$ cd go/
 ```
