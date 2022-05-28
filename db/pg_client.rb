@@ -9,6 +9,6 @@ class PgClient
   def_delegator :@connection, :exec
 
   def initialize
-    @connection = PG.connect(dbname: 'sinatra-db')
+    @connection = PG.connect('postgres://postgres:password@localhost:35432/sinatra-db')
   end
 end
